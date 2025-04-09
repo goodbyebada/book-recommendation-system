@@ -1,4 +1,4 @@
-import { serverBook } from "@components/model/interfaceModel";
+import { serverBook } from "@utils/model/interfaceModel";
 
 export const dummyData: serverBook[] = [
   {

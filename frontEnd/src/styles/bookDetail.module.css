@@ -1,0 +1,95 @@
+/* bookDetail.module.css */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bookDetail_wrapper {
+  margin: 5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.top_component {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  padding-left: 10%;
+}
+
+.book_image {
+  flex: 1 1 200px;
+  max-width: 200px;
+  margin-right: 20px;
+  margin-top: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.book_image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.book_info,
+.basic_info_detail {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.author {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.publisher {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 871px) {
+  .bookDetail_wrapper {
+    margin: 2rem;
+  }
+  .top_component {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .book_image {
+    margin: 0;
+    margin-top: 20px;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .book_info,
+  .basic_info_detail {
+    align-items: center;
+    text-align: center;
+  }
+  .basic_info_detail {
+    flex: 2 1 200px;
+    flex-wrap: wrap;
+    padding: 0px;
+  }
+}

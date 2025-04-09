@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
-import HeaderWrap from "@components/containers/headerWrap";
+
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import favicon from "@public/icons/hanyang.svg";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
+
+import Header from "@components/common/item/Header";
+import Footer from "@components/common/Footer";
+import { HEADER_HEIGHT } from "@data/const";
 
 export const metadata: Metadata = {
   title: "독서하냥",
@@ -24,18 +29,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <HeaderWrap>{children}</HeaderWrap>
-
-        {/* 네비게이션과 같이 url에 따라 바뀌거나, 고정 */}
-        {/* <Suspense
+        <Suspense
           fallback={
             <div style={{ backgroundColor: "red", height: "500px" }}>
               Loading...
             </div>
           }
         >
-          <NavigationEvents />
-        </Suspense> */}
+          <Header />
+          <div
+            id="main-content-area"
+            className="main_content_area"
+            style={{
+              paddingTop: `${HEADER_HEIGHT}`,
+              paddingBottom: HEADER_HEIGHT,
+            }}
+          >
+            {children}
+          </div>
+
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );

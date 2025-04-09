@@ -8,6 +8,11 @@ body {
   font-family: "NanumBarunGothic";
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --bs-blue: #003da5; /* CSS 전역 변수 선언 */
   --bs-btn-bg: #003da5; /* CSS 전역 변수 선언 */
@@ -39,10 +44,6 @@ body {
   height: 100%;
 }
 
-.header_wrapper {
-  height: 100%;
-}
-
 .main_content_area {
   min-height: calc(100% - 50px);
 }
@@ -61,11 +62,13 @@ footer > a {
   border-bottom: var(--bs-gray-dark);
 }
 
+/* TODO 왜..?*/
 footer > * {
   color: white;
 
   /* padding-left: 30px; */
 }
+/* TODO 굳이 id 사용하는 이유가..? */
 footer #bar {
   color: var(--bs-primary-text-emphasis);
   margin: 0 5px 0 5px;
@@ -74,17 +77,6 @@ footer #copy-right {
   color: var(--bs-primary-text-emphasis);
   margin-top: 3px;
 }
-
-hr {
-  margin: 0;
-}
-/* .wrapper {
-  display: grid;
-  display: flex;
-  flex-direction: row;
-  background-color: bisque;
-  overflow-x: scroll;
-} */
 
 main {
   display: flex;

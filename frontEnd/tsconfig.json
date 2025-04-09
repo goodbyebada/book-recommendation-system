@@ -24,7 +24,9 @@
       "@public/*": ["./public/*"],
       "@styles/*": ["./src/styles/*"],
       "@components/*": ["./src/components/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "@types/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"]
       // "paths": { "@별칭명/*": ["경로/*"] }
     }
   },
@@ -33,7 +35,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/component/index.ts",
     "/Applications/Postman.app"
   ],
   "exclude": ["node_modules"]
