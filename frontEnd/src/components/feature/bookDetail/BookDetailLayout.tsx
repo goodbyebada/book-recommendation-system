@@ -30,7 +30,7 @@ export default function BookDetailLayout({
           }}
         />
       ) : (
-        <LoadingComponent isFecthed={false} />
+        <LoadingComponent />
       )}
     </DetailBookWrapper>
   );
