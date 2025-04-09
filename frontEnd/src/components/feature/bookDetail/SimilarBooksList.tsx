@@ -13,7 +13,7 @@ import { List } from "postcss/lib/list";
  */
 export default function SimilarBooksList({ props }: { props: navItemType }) {
   const { idx, tagId, item, content, onClickBook } = props;
-  const contentList = content as BookItem[];
+  const contentList = content as BookItemInterface[];
 
   return (
     <div className={styles.book_list_container}>
@@ -24,7 +24,9 @@ export default function SimilarBooksList({ props }: { props: navItemType }) {
               bookInfo={e}
               key={idx}
               clickEvent={
-                onClickBook !== null ? onClickBook : (bookItem: BookItem) => {}
+                onClickBook !== null
+                  ? onClickBook
+                  : (bookItem: BookItemInterface) => {}
               }
             />
           ))

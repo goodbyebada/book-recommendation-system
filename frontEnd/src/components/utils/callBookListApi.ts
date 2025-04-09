@@ -1,5 +1,8 @@
-import { Data, serverBook } from "@components/model/interfaceModel";
-import { serverBookToData } from "@components/model/interfaceModel";
+import {
+  Data,
+  serverBook,
+  serverBookToData,
+} from "@utils/model/interfaceModel";
 import { useDummy } from "@data/const";
 import { dummyData } from "@data/dummyData";
 

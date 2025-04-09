@@ -2,8 +2,6 @@
 
 import React from "react";
 import styles from "@styles/loading.module.css";
-import NotFound from "@components/NotFound";
-import { notFound } from "next/navigation";
 
 const LoadingComponent = () => {
   return (
