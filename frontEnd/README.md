@@ -1,3 +1,24 @@
+## Git Flow 규칙
+
+- **main**: 운영용 브랜치
+- **develop**: 개발 통합 브랜치
+- `feature/기능명`
+
+  - 기능 개발용
+  - `develop`에서 분기 → 작업 후 `develop`으로 merge
+
+- `hotfix/수정명`
+  - 운영 중 긴급 수정
+  - `main`에서 분기 → 수정 후 `main`과 `develop`에 merge
+
+## Merge 흐름
+
+```
+feature/* → develop → main
+              ↑
+          hotfix/*
+```
+
 ## ✅ 커밋 컨벤션
 
 커밋 메시지는 아래 형식을 따릅니다:
@@ -29,19 +50,3 @@ feat(login): 비밀번호 UI 추가
 fix(user-profile): 유저 프로필 로딩 버그 수정
 docs(global): README 커밋 컨벤션 추가
 ```
-
----
-
-### 폴더 구조
-
-```
-/pages
-├── HomePage.tsx
-├── UserFormPage.tsx
-├── RecommendedBooksPage.tsx
-├── BookDetailPage.tsx
-```
-
-### 네이밍 컨벤션
-
-Layout > Template > Content > Section
