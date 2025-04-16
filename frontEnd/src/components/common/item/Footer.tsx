@@ -14,7 +14,7 @@ function Footer() {
           <Link href="https://github.com/yppp33/capstone" target="_blank">
             Github
           </Link>
-          {/* TODO CSS 선언 점검  */}
+
           <span id="bar" className="mx-2">
             |
           </span>
