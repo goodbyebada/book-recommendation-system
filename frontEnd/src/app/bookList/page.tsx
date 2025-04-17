@@ -13,6 +13,7 @@ import {
 import { useAladin, useDummy } from "@data/const";
 import { Api1Url } from "@data/const";
 import { dummyData } from "@data/dummyData";
+import { getAladinBookList } from "@utils/getAladinBookList";
 
 function Search() {
   const searchParams = useSearchParams();
@@ -31,72 +32,52 @@ export default function BookList() {
    */
   useEffect(() => {
     // 임시 알라딘 호출 함수
-
     if (useAladin) {
-      fetch("/api?" + params)
-        .then((res) => {
-          console.log(res);
-          return res.json();
-        })
-        .then((e) => {
-          console.log(e);
-          let convertedList = aladinToData(e);
-          console.log(convertedList);
-          setData(convertedList);
-        });
+      const fetchData = async () => {
+        const bookData = await getAladinBookList(params);
+        const convertedDataList: Data[] = aladinToData(bookData);
+        setData(convertedDataList);
+      };
 
-      if (useAladin) {
-        const callAladin = async () => {
-          const res = await fetch(`api?${params}`);
-          return res.json();
-        };
+      fetchData();
+      return;
+    }
 
-        const fetchData = async () => {
-          const bookData = await callAladin();
-          const convertedDataList: Data[] = aladinToData(bookData);
-          setData(convertedDataList);
-        };
+    if (useDummy) {
+      const bookData = dummyData;
+      const convertedDataList: Data[] = serverBookToData(bookData);
+      setData(convertedDataList);
+      return;
+    }
 
-        fetchData();
-        return;
-      }
+    const finalUrl = `${Api1Url}?${params}`;
+    console.log(finalUrl);
+    fetch(finalUrl)
+      .then((response) => {
+        if (!response.ok) {
+          alert("입력받은 정보는 대출내역이 부족합니다 :(");
 
-      if (useDummy) {
-        const bookData = dummyData;
+          // setIsData(false);
+          return [];
+        }
+        const json = response.json();
+        alert("입력받은 정보는 대출내역이 부족합니다 :(");
+        console.log("api로 들어온 res json으로 변환");
+        // console.log(`${json}`);
+        // setIsData(false);
+        return json; // JSON 데이터를 반환하는 프로미스
+      })
+      .then((bookData: serverBook[]) => {
+        console.log(bookData); // JSON 데이터를 로깅
         const convertedDataList: Data[] = serverBookToData(bookData);
         setData(convertedDataList);
-        return;
-      }
-
-      const finalUrl = `${Api1Url}?${params}`;
-      console.log(finalUrl);
-      fetch(finalUrl)
-        .then((response) => {
-          if (!response.ok) {
-            alert("입력받은 정보는 대출내역이 부족합니다 :(");
-
-            // setIsData(false);
-            return [];
-          }
-          const json = response.json();
-          alert("입력받은 정보는 대출내역이 부족합니다 :(");
-          console.log("api로 들어온 res json으로 변환");
-          // console.log(`${json}`);
-          // setIsData(false);
-          return json; // JSON 데이터를 반환하는 프로미스
-        })
-        .then((bookData: serverBook[]) => {
-          console.log(bookData); // JSON 데이터를 로깅
-          const convertedDataList: Data[] = serverBookToData(bookData);
-          setData(convertedDataList);
-        })
-        .catch((error) => {
-          console.log("인터페이스 변환 실패, json로그와 함께 카톡주세요");
-          alert("입력받은 정보는 대출내역이 부족합니다 :(");
-          // setIsData(false);
-          console.log(error);
-        });
-    }
+      })
+      .catch((error) => {
+        console.log("인터페이스 변환 실패, json로그와 함께 카톡주세요");
+        alert("입력받은 정보는 대출내역이 부족합니다 :(");
+        // setIsData(false);
+        console.log(error);
+      });
   }, []);
 
   return (

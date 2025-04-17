@@ -14,6 +14,7 @@ import { dummyData } from "@data/dummyData";
 import { Data } from "@utils/model/interfaceModel";
 import { aladinToData } from "@utils/model/interfaceModel";
 import { useSearchParams } from "next/navigation";
+import { getAladinBookList } from "@utils/getAladinBookList";
 
 /**
  * 단일 책 상세 페이지
@@ -36,13 +37,8 @@ export default function BookDetailContent({
     if (useAladin) {
       const params = decodeURI(`${searchParams}`);
 
-      const callAladin = async () => {
-        const res = await fetch(`api?${params}`);
-        return res.json();
-      };
-
       const fetchData = async () => {
-        const bookData = await callAladin();
+        const bookData = await getAladinBookList(params);
         const convertedDataList: Data[] = aladinToData(bookData);
         const bookItemLsit: BookItemInterface[] =
           returnBookList(convertedDataList);
