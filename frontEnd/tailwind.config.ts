@@ -29,6 +29,7 @@ const config: Config = {
       },
       colors: {
         "sky-blue": "#e8f0fe",
+        "light-sky-blue": "#f1f5f9",
         "light-gray": "#666",
       },
       backgroundImage: {

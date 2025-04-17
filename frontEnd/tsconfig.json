@@ -35,7 +35,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "/Applications/Postman.app"
+    "/Applications/Postman.app",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }

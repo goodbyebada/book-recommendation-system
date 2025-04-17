@@ -15,9 +15,9 @@ const departments = [
 
 function DepartmentBookSampleList() {
   return (
-    <section className="section">
-      <h2>우리 학과 하냥인의 Pick은?</h2>
-      <div className="dept-grid">
+    <section className="content-center-col">
+      <h2 className="text-title mb-10">우리 학과 하냥인의 Pick은?</h2>
+      <div className="flex justify-center gap-8 flex-wrap mt-8">
         {departments.map((dept) => (
           <div className="dept-card" key={dept.name}>
             <h4 className="dept-card-title">{dept.name}</h4>
