@@ -1,8 +1,7 @@
 "use client";
 
 import BookItem from "@components/common/item/BookItem";
-import styles from "@styles/book.module.css";
-import { useState, useRef, useEffect, use } from "react";
+import { useState } from "react";
 import { BookItemInterface, Data } from "@utils/model/interfaceModel";
 import { isEmptyObj } from "@utils/model/interfaceModel";
 import BookDetailLayout from "@components/feature/bookDetail/BookDetailLayout";
@@ -29,7 +28,7 @@ export default function PersonalizedBookPage({
    * 모달 기능
    */
   const [selectedBook, setSelectedBook] = useState<BookItemInterface | null>(
-    null
+    null,
   );
 
   const clickBook = (bookItem: BookItemInterface) => {
@@ -53,10 +52,13 @@ export default function PersonalizedBookPage({
         />
       ) : (
         // 책 추천 리스트 페이지
-        <div className={styles.book_recommand_list}>
-          <h3 className="d-flex p-5 justify-content-center">추천합니다!</h3>
-          <div className={styles.show_book_list_container}>
-            <div className={styles.show_book_list}>
+        <div>
+          <h3 className="my-8 flex justify-center text-display font-bold">
+            추천합니다!
+          </h3>
+          <div className="flex justify-center xs:px-[1rem] sm:px-[2rem]">
+            {/* TODO inline style 너무 길다. 과연 가독성이 좋은지 고민  */}
+            <div className="grid gap-[20px] xs:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
               {returnBookList(dataList).map((data, idx) => (
                 <BookItem
                   key={idx}

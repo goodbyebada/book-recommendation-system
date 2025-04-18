@@ -1,8 +1,6 @@
 "use client";
 
 import { BookItemInterface } from "@utils/model/interfaceModel";
-import styles from "@styles/book.module.css";
-import { useDummy } from "@data/const";
 import noImage from "@public/images/noImage.png";
 
 /**
@@ -32,31 +30,29 @@ export default function BookItem({
 
   return (
     <div
-      className={styles.book_item}
+      className="book-item content-center-col"
       onClick={() => {
         clickEvent(bookInfo);
         window.scrollTo(0, 0);
       }}
     >
-      <div id={styles.book_cover}>
-        <img src={cover} alt={title} onError={onErrorImg} />
+      <div>
+        <img className="rounded" src={cover} alt={title} onError={onErrorImg} />
       </div>
 
-      <div id={styles.title} className="fw-bold" style={{ fontSize: "1.5rem" }}>
+      <div className="mt-4 text-bodyMd font-bold">
         <p>{title}</p>
       </div>
 
       <div>
-        <span id={styles.book_author}>
+        <span className="text-body">
           {authors.length > 1
             ? `${authors[0]}외 ${authors.length - 1}명`
             : authors[0]}
         </span>
       </div>
 
-      <div className="mt-1" style={{ fontSize: "0.9rem", color: "		#9F9F9F" }}>
-        {publisher}
-      </div>
+      <div className="text-labe mt-1 text-light-gray">{publisher}</div>
     </div>
   );
 }
