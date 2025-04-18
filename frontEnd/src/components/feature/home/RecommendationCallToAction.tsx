@@ -2,10 +2,10 @@ import Link from "next/link";
 
 function RecommendationCallToAction() {
   return (
-    <section className="rounded-2xl px-12	py-8 text-center m-[4rem] bg-sky-blue">
-      <div className="ai-box">
-        <h2 className="text-title m-2">AI 도서 추천</h2>
-        <p className="text-subtitle mb-6">
+    <section className="m-[4rem] rounded-2xl bg-sky-blue px-12 py-8 text-center">
+      <div>
+        <h2 className="m-2 text-title">AI 도서 추천</h2>
+        <p className="mb-6 text-subtitle">
           지금 나에게 꼭 맞는 책을 AI가 추천해드립니다.
         </p>
 

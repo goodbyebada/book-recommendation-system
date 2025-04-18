@@ -4,8 +4,8 @@ import Link from "next/link";
 
 function Footer() {
   return (
-    <footer className="bg-light-sky-blue text-bodyBase p-4 text-light-gray h-[10rem]">
-      <div className="flex flex-col justify-center items-center">
+    <footer className="text-body h-[10rem] bg-light-sky-blue p-4 text-light-gray">
+      <div className="flex flex-col items-center justify-center">
         <div>
           <Link
             className="text-blue-600"
