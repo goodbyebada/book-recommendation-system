@@ -2,50 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background-color: rgb(250, 250, 250);
-
-  font-family: "NanumBarunGothic";
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --bs-blue: #003da5; /* CSS 전역 변수 선언 */
   --bs-btn-bg: #003da5; /* CSS 전역 변수 선언 */
 }
 
-@font-face {
-  font-family: "NanumBarunGothic";
-  font-style: normal;
-  font-weight: 400;
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
-  src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
-      format("embedded-opentype"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
-      format("woff"),
-    url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
-      format("truetype");
-}
-
-.nanumbarungothic * {
-  font-family: "NanumBarunGothic", sans-serif;
-}
-
-#root,
-#root > div {
-  height: 100%;
-}
-
-.main_content_area {
-  min-height: calc(100% - 50px);
+@layer base {
+  @font-face {
+    font-family: "NanumBarunGothic";
+    font-style: normal;
+    font-weight: 400;
+    src: url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot");
+    src:
+      url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix")
+        format("embedded-opentype"),
+      url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff")
+        format("woff"),
+      url("//fastly.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf")
+        format("truetype");
+  }
 }
 
 img {
@@ -149,7 +124,9 @@ input:autofill:focus {
   border: 1px red solid;
   box-shadow: 0 0 0 0.25rem var(--bs-danger-border-subtle);
   color: var(--bs-form-invalid-color);
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   border-radius: 0.5em;
 }
 
@@ -421,21 +398,6 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-/* 새로운 디자인 CSS */
-/* 기본 설정 */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Pretendard", sans-serif;
-  background-color: #f9fafb;
-  color: #222;
-  line-height: 1.6;
 }
 
 .logo {
