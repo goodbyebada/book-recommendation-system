@@ -65,7 +65,7 @@ const Department = ({
 
     setInputValue(valueToShow);
     const matched = departments.filter((department) =>
-      department.includes(value)
+      department.includes(value),
     );
     setMatchedDepartments(matched);
   };
@@ -97,7 +97,7 @@ const Department = ({
        *  폼 제출시 입력된다.
        */
       let department = matchedDepartments.find(
-        (departement) => departement === inputValue
+        (departement) => departement === inputValue,
       );
       if (department) {
         afterEnter(department);

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
-import GenderForm from "@components/formItems/GenderForm";
-import PatronTypeSelector from "@components/formItems/EducationSelector";
-import Department from "@components/formItems/Department";
+import GenderForm from "@components/feature/userForm/formItems/GenderForm";
+import PatronTypeSelector from "@components/feature/userForm/formItems/EducationSelector";
+import Department from "@components/feature/userForm/formItems/Department";
 import { useRouter } from "next/navigation";
 import { inputData } from "@utils/model/interfaceModel";
-import { startYear, endYear } from "@components/formItems/ExtendedDropdown";
+import {
+  startYear,
+  endYear,
+} from "@components/feature/userForm/formItems/ExtendedDropdown";
 
-import ExtendedDropdown from "@components/formItems/ExtendedDropdown";
+import ExtendedDropdown from "@components/feature/userForm/formItems/ExtendedDropdown";
 import { checkformData } from "@utils/model/interfaceModel";
 import { departments } from "@data/patron";
 import { patronType1departments, patronType2departments } from "@data/patron";
