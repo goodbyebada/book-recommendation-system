@@ -44,7 +44,7 @@ export default function BookItem({
         <p>{title}</p>
       </div>
 
-      <div>
+      <div className="hidden md:block">
         <span className="text-body">
           {authors.length > 1
             ? `${authors[0]}외 ${authors.length - 1}명`
@@ -52,7 +52,9 @@ export default function BookItem({
         </span>
       </div>
 
-      <div className="text-labe mt-1 text-light-gray">{publisher}</div>
+      <div className="hidden md:block">
+        <div className="text-labe mt-1 text-light-gray">{publisher}</div>
+      </div>
     </div>
   );
 }

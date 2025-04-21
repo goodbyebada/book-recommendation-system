@@ -1,7 +1,6 @@
 "use client";
 import React, { forwardRef } from "react";
 import { navItemType } from "@utils/model/interfaceModel";
-import styles from "@styles/detailInfo.module.css";
 import SimilarBooksList from "@components/feature/bookDetail/SimilarBooksList";
 
 /**
@@ -24,26 +23,25 @@ const BookDetailSection = forwardRef(
           }
         }}
         id={idx.toString()}
-        className={styles.detail_section}
+        className="box-shadow mb-3 flex rounded bg-white p-[20px] pb-[50px] last:rounded"
       >
-        <div className={styles.detail_info_content}>
-          <h2 className={styles.detail_title}>{item}</h2>
-          {typeof content === "string" ? (
-            content !== "" ? (
-              <p
-                dangerouslySetInnerHTML={{ __html: content }}
-                className={styles.detail_text}
-              ></p>
+        <div className="overflow-x-scroll">
+          <h2 className="mb-[10px] text-subtitle text-black">{item}</h2>
+          <div className="text-body text-light-gray">
+            {typeof content === "string" ? (
+              content !== "" ? (
+                <p dangerouslySetInnerHTML={{ __html: content }}></p>
+              ) : (
+                <p>설명이 없습니다.</p>
+              )
             ) : (
-              <p className={styles.detail_text}>설명이 없습니다.</p>
-            )
-          ) : (
-            <SimilarBooksList props={props} />
-          )}
+              <SimilarBooksList props={props} />
+            )}
+          </div>
         </div>
       </section>
     );
-  }
+  },
 );
 
 export default BookDetailSection;

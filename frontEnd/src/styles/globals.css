@@ -450,6 +450,12 @@ img {
     justify-content: center;
     align-items: center;
   }
+
+  .book-basic-md {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 /*TODO 변수로 관리할 예정*/
@@ -473,7 +479,7 @@ img {
   }
 
   .book-item {
-    max-width: 300px;
+    flex-shrink: 0;
     background: theme("colors.white");
     text-align: center;
     padding: 0.3125rem;
@@ -531,4 +537,20 @@ img {
   .btn:hover {
     background-color: #1e40af;
   }
+}
+
+/* Scrollbar styling */
+/* TODO 반영 예정 */
+.book_list_container::-webkit-scrollbar {
+  height: 12px;
+}
+
+.book_list_container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.book_list_container::-webkit-scrollbar-track {
+  background-color: #f8f8f8;
+  border-radius: 10px;
 }

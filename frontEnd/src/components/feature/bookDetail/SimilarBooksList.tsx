@@ -16,8 +16,8 @@ export default function SimilarBooksList({ props }: { props: navItemType }) {
   const contentList = content as BookItemInterface[];
 
   return (
-    <div className={styles.book_list_container}>
-      <div className={styles.book_list}>
+    <div className="box-shadow flex rounded bg-slate-600 p-2">
+      <div className="flex gap-[20px] overflow-x-scroll">
         {contentList
           .map((e, idx) => (
             <BookItem

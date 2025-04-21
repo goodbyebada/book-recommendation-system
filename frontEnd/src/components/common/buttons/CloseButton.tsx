@@ -12,6 +12,7 @@ interface CloseButtonProps {
  */
 function CloseButton({ onClick }: CloseButtonProps) {
   return (
+    // bootstrap
     <button
       type="button"
       className="btn-close p-4"

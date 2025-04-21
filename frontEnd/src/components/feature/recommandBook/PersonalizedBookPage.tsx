@@ -4,7 +4,7 @@ import BookItem from "@components/common/item/BookItem";
 import { useState } from "react";
 import { BookItemInterface, Data } from "@utils/model/interfaceModel";
 import { isEmptyObj } from "@utils/model/interfaceModel";
-import BookDetailLayout from "@components/feature/bookDetail/BookDetailLayout";
+import SelectedBookDetailModal from "@components/feature/bookDetail/SelectedBookDetailModal";
 import { returnBookList } from "@utils/model/interfaceModel";
 
 /**
@@ -46,7 +46,7 @@ export default function PersonalizedBookPage({
     <>
       {selectedBook ? (
         // 책 추천 시 , 단일 책 상세 페이지
-        <BookDetailLayout
+        <SelectedBookDetailModal
           selectedBook={selectedBook}
           clickEvent={closeAboutBook}
         />
