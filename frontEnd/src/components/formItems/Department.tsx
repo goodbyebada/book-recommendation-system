@@ -19,18 +19,14 @@ const Department = ({
 
   useEffect(() => {
     setCheck(departmentCheck);
-    console.log("부모컴포넌트에서의 전달값이 변경");
     alertSetence === "" ? setAlertSentence("전공을 다시 확인해주세요") : "";
   }, [departmentCheck]);
 
   const alertChecktoValidValue = () => {
-    // console.log(check);
     const input = document.getElementById("floatingInputValue-2");
 
     if (!check) {
       input?.classList.add("invalid");
-
-      console.log(input?.classList.contains("invalid"));
     } else {
       if (input?.classList.contains("invalid"))
         input?.classList.remove("invalid");
@@ -39,7 +35,8 @@ const Department = ({
 
   useEffect(alertChecktoValidValue, [check]);
 
-  const afterEnter = (selectedDepartment: string) => {
+  // 주어진 학과 중 선택했을 시
+  const selectSuggestionDepartmentItem = (selectedDepartment: string) => {
     setCheck(true);
     setInputValue(selectedDepartment);
     // input란에 선택한 departement로
@@ -55,15 +52,16 @@ const Department = ({
     const value = e.target.value.toUpperCase();
     const valueToShow = e.target.value;
 
-    // 자동완성 눌렀을시
+    // 입력을 완벽히 했을 시,
     if (departments.includes(value)) {
-      afterEnter(value);
+      selectSuggestionDepartmentItem(value);
       return;
-    } else {
-      setCheck(false);
     }
 
+    setCheck(false);
     setInputValue(valueToShow);
+    onChange(valueToShow);
+
     const matched = departments.filter((department) =>
       department.includes(value)
     );
@@ -72,7 +70,7 @@ const Department = ({
 
   /** 클릭했을때 일어나는 이벤트이다. */
   const handleDepartmentClick = (department: string, index: number) => {
-    afterEnter(department);
+    selectSuggestionDepartmentItem(department);
   };
 
   /**엔터시 자동완성되는 함수이다. */
@@ -87,7 +85,7 @@ const Department = ({
      */
     if (matchedDepartments.length == 1) {
       let department = matchedDepartments[0];
-      afterEnter(department);
+      selectSuggestionDepartmentItem(department);
       return;
     }
 
@@ -100,7 +98,7 @@ const Department = ({
         (departement) => departement === inputValue
       );
       if (department) {
-        afterEnter(department);
+        selectSuggestionDepartmentItem(department);
       }
     }
 
