@@ -11,7 +11,6 @@ import { checkformData } from "@utils/model/interfaceModel";
 import { departments } from "@data/patron";
 import { patronType1departments, patronType2departments } from "@data/patron";
 import { useAladin } from "@data/const";
-import { useWebViewState } from "@utils/provider";
 
 const EMPTY_STRING = "";
 const DEFAULT_GENDER = "F";
@@ -74,8 +73,6 @@ const UserInputForm = () => {
     patronCheck: true,
   });
 
-  const isWebView = useWebViewState();
-
   // 객체 프로퍼티를 2개를 만들어 그 값을 변경한다..!
 
   /**
@@ -104,7 +101,7 @@ const UserInputForm = () => {
     );
     // ture여야지 조건통과
 
-    // 조건에 맞는지 체크한다.
+    // 모든 조건 통과 로직
     const checkAlltheInput = (formData: inputData) => {
       const { gender, patron_type, birthdate, department } = formData;
       return (
@@ -114,8 +111,6 @@ const UserInputForm = () => {
         department !== EMPTY_STRING &&
         departments.includes(department)
       );
-
-      // 유효성 검사 로직
     };
 
     const submitcheckValueToChildComponent = (
