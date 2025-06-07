@@ -132,7 +132,11 @@ const UserInputForm = () => {
 
     // 공백이 아니고 올바른 조건이라면
     if (isFormComplete && checkAlltheInput(formData)) {
-      // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
+      // RN으로 넘길 때
+      if (typeof window !== "undefined" && window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(JSON.stringify(formData));
+        return;
+      }
 
       const queryString = returnQueryString(formData);
       router.push(routeUrl + "?" + queryString);
