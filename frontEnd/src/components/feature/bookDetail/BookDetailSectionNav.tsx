@@ -4,6 +4,7 @@ import { navItemType } from "@utils/model/interfaceModel";
 import { useState } from "react";
 import { useRef, useEffect } from "react";
 import { HEADER_HEIGHT } from "@data/const";
+import { useWebViewState } from "@utils/provider";
 
 /**
  *  책 상세 페이지
@@ -25,6 +26,7 @@ export default function BookDetailSectionNav({
   const [activeIndex, setActiveIndex] = useState<null | number>(null);
 
   const navRef = useRef<HTMLElement[]>([]);
+  const isWebView = useWebViewState();
 
   useEffect(() => {
     if (navIndex !== null) {
@@ -99,7 +101,13 @@ export default function BookDetailSectionNav({
   //   }
   // });
   return (
-    <nav style={{ position: "sticky", top: HEADER_HEIGHT, zIndex: 1 }}>
+    <nav
+      style={{
+        position: "sticky",
+        top: `${isWebView ? "0px" : HEADER_HEIGHT}`,
+        zIndex: 1,
+      }}
+    >
       <ul id="aboutBook_tab" className="nav nav-tabs bg-white ">
         {navItemList.map((elem, idx) => (
           <li

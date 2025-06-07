@@ -13,6 +13,7 @@ import Header from "@components/common/item/Header";
 import Footer from "@components/common/Footer";
 import { HEADER_HEIGHT } from "@data/const";
 import { headers } from "next/headers";
+import { WebViewStateProvider } from "@utils/provider";
 
 export const metadata: Metadata = {
   title: "독서하냥",
@@ -31,7 +32,6 @@ export default function RootLayout({
   const userAgent = headersList.get("user-agent") || "";
   const isWebView = userAgent.includes("webview-hanyang");
 
-
   return (
     <html lang="en">
       <body>
@@ -42,18 +42,20 @@ export default function RootLayout({
             </div>
           }
         >
-          {!isWebView && <Header />}
-          <div
-            id="main-content-area"
-            className="main_content_area"
-            style={{
-              paddingTop: `${isWebView ? "0px" : HEADER_HEIGHT}`,
-              paddingBottom: isWebView ? "0px" : HEADER_HEIGHT,
-            }}
-          >
-            {children}
-          </div>
-          {!isWebView && <Footer />}
+          <WebViewStateProvider webViewState={isWebView}>
+            <Header />
+            <div
+              id="main-content-area"
+              className="main_content_area"
+              style={{
+                paddingTop: `${isWebView ? "0px" : HEADER_HEIGHT}`,
+                paddingBottom: isWebView ? "0px" : HEADER_HEIGHT,
+              }}
+            >
+              {children}
+            </div>
+            <Footer />
+          </WebViewStateProvider>
         </Suspense>
       </body>
     </html>
