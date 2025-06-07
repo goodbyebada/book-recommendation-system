@@ -12,6 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 import Header from "@components/common/item/Header";
 import Footer from "@components/common/Footer";
 import { HEADER_HEIGHT } from "@data/const";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: "독서하냥",
@@ -26,6 +27,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const headersList = headers();
+  const userAgent = headersList.get("user-agent") || "";
+  const isWebView = userAgent.includes("webview-hanyang");
+
+
   return (
     <html lang="en">
       <body>
@@ -36,19 +42,18 @@ export default function RootLayout({
             </div>
           }
         >
-          <Header />
+          {!isWebView && <Header />}
           <div
             id="main-content-area"
             className="main_content_area"
             style={{
-              paddingTop: `${HEADER_HEIGHT}`,
-              paddingBottom: HEADER_HEIGHT,
+              paddingTop: `${isWebView ? "0px" : HEADER_HEIGHT}`,
+              paddingBottom: isWebView ? "0px" : HEADER_HEIGHT,
             }}
           >
             {children}
           </div>
-
-          <Footer />
+          {!isWebView && <Footer />}
         </Suspense>
       </body>
     </html>
