@@ -11,11 +11,14 @@ import { checkformData } from "@utils/model/interfaceModel";
 import { departments } from "@data/patron";
 import { patronType1departments, patronType2departments } from "@data/patron";
 import { useAladin } from "@data/const";
+import { useWebViewState } from "@utils/provider";
 
 const EMPTY_STRING = "";
 const DEFAULT_GENDER = "F";
 const DEFAULT_PATORN_ID = 1;
 const TEST_BIRTH = parseInt("1990");
+
+// [ ] natve 연결 추가해야함 🚨
 
 /**
  * Test를 위한 Form
@@ -70,6 +73,8 @@ const UserInputForm = () => {
     departmentCheck: true,
     patronCheck: true,
   });
+
+  const isWebView = useWebViewState();
 
   // 객체 프로퍼티를 2개를 만들어 그 값을 변경한다..!
 

@@ -1,9 +1,15 @@
 // Header.tsx
+
+"use client";
 import React from "react";
 import Link from "next/link";
 import { HEADER_HEIGHT } from "@data/const";
+import { useWebViewState } from "@utils/provider";
 
 function Header() {
+  const isWebView = useWebViewState();
+  if (isWebView) return null;
+
   return (
     <nav className="header" style={{ height: HEADER_HEIGHT }}>
       <div className="d-flex text-white flex-row justify-content-between">
